@@ -1,0 +1,152 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch LightPainter (Debug)",
+			"request": "launch",
+			"program": "G:\\Unreal Projects\\LightPainter\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
+			"preLaunchTask": "LightPainter Win64 Debug Build",
+			"args": [
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainter (DebugGame)",
+			"request": "launch",
+			"program": "G:\\Unreal Projects\\LightPainter\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
+			"preLaunchTask": "LightPainter Win64 DebugGame Build",
+			"args": [
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainter (Development)",
+			"request": "launch",
+			"program": "G:\\Unreal Projects\\LightPainter\\Binaries\\Win64\\UnrealGame.exe",
+			"preLaunchTask": "LightPainter Win64 Development Build",
+			"args": [
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainter (Test)",
+			"request": "launch",
+			"program": "G:\\Unreal Projects\\LightPainter\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
+			"preLaunchTask": "LightPainter Win64 Test Build",
+			"args": [
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainter (Shipping)",
+			"request": "launch",
+			"program": "G:\\Unreal Projects\\LightPainter\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
+			"preLaunchTask": "LightPainter Win64 Shipping Build",
+			"args": [
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainterEditor (Debug)",
+			"request": "launch",
+			"program": "F:\\Unreal Engine\\UE_5.0\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
+			"preLaunchTask": "LightPainterEditor Win64 Debug Build",
+			"args": [
+				"G:\\Unreal Projects\\LightPainter\\LightPainter.uproject"
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainterEditor (DebugGame)",
+			"request": "launch",
+			"program": "F:\\Unreal Engine\\UE_5.0\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-DebugGame.exe",
+			"preLaunchTask": "LightPainterEditor Win64 DebugGame Build",
+			"args": [
+				"G:\\Unreal Projects\\LightPainter\\LightPainter.uproject"
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Launch LightPainterEditor (Development)",
+			"request": "launch",
+			"program": "F:\\Unreal Engine\\UE_5.0\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
+			"preLaunchTask": "LightPainterEditor Win64 Development Build",
+			"args": [
+				"G:\\Unreal Projects\\LightPainter\\LightPainter.uproject"
+			],
+			"cwd": "F:\\Unreal Engine\\UE_5.0",
+			"stopAtEntry": false,
+			"console": "externalTerminal",
+			"type": "cppvsdbg",
+			"visualizerFile": "F:\\Unreal Engine\\UE_5.0\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
+			"sourceFileMap": {
+				"D:\build\++UE5\Sync": "F:\\Unreal Engine\\UE_5.0"
+			}
+		},
+		{
+			"name": "Generate Project Files",
+			"type": "coreclr",
+			"request": "launch",
+			"program": "F:\\Unreal Engine\\UE_5.0\\Engine\\Binaries\\DotNET\\UnrealBuildTool\\UnrealBuildTool",
+			"args": [
+				"-projectfiles",
+				"-vscode",
+				"-project=G:\\Unreal Projects\\LightPainter\\LightPainter.uproject",
+				"-game",
+				"-engine"
+			],
+			"console": "externalTerminal",
+			"stopAtEntry": false,
+			"cwd": "F:\\Unreal Engine\\UE_5.0"
+		}
+	]
+}
