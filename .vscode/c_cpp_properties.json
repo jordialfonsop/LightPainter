@@ -1,14 +1,19 @@
 {
-	"configurations": [
-		{
-			"name": "LightPainterEditor Editor Win64 Development (LightPainter)",
-			"intelliSenseMode": "msvc-x64",
-			"compileCommands": "G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter.json"
-		},
-		{
-			"name": "Win32",
-			"intelliSenseMode": "msvc-x64",
-			"compileCommands": "G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default.json"
-		}
-	]
+    "configurations": [
+        {
+            "name": "LightPainterEditor Editor Win64 Development (LightPainter)",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter.json",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        },
+        {
+            "name": "Win32",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default.json",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
 }
