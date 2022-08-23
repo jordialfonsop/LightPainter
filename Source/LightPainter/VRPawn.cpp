@@ -149,8 +149,8 @@ void AVRPawn::StopDraw()
 
 bool AVRPawn::FindTeleportDestination(TArray<FVector> &OutPath,FVector& OutLocation)
 {
-	FVector Start = RightController->GetActorLocation();
-	FVector End = RightController->GetActorForwardVector() * DestinationMarkerSpeed;
+	FVector Start = LeftController->GetActorLocation();
+	FVector End = LeftController->GetActorForwardVector() * DestinationMarkerSpeed;
 
 
 	FPredictProjectilePathParams Params = FPredictProjectilePathParams(10.0f,Start,End,2.0f,ECollisionChannel::ECC_Visibility, this);

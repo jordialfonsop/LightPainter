@@ -19,9 +19,11 @@ public:
 
 private:
 
-	class USplineMeshComponent* CreateSplineMesh();
-
-
+	FTransform GetNextSegmentTransform(FVector CursorCurrentLocation) const;
+	FTransform GetNextJointTransform(FVector CursorCurrentLocation) const;
+	FVector GetNextSegmentScale(FVector CursorCurrentLocation)const;
+	FQuat GetNextSegmentRotation(FVector CursorCurrentLocation)const;
+	FVector GetNextSegmentLocation(FVector CursorCurrentLocation)const;
 
 	// Components
 	UPROPERTY(VisibleAnywhere)
@@ -29,7 +31,10 @@ private:
 
 	// Config
 	UPROPERTY(EditDefaultsOnly)
-	UStaticMesh* SplineMesh;
+	class UInstancedStaticMeshComponent* StrokeMeshes;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UInstancedStaticMeshComponent* JointsMeshes;
 
 	UPROPERTY(EditDefaultsOnly)
 	UMaterialInterface* SplineMaterial;
