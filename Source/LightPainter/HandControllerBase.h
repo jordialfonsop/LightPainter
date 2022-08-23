@@ -4,24 +4,25 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "HandController.generated.h"
+#include "HandControllerBase.generated.h"
 
 UCLASS()
-class LIGHTPAINTER_API AHandController : public AActor
+class LIGHTPAINTER_API AHandControllerBase : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AHandController();
+	AHandControllerBase();
+
+	virtual void TriggerPressed() {}
+	virtual void TriggerReleased() {}
 
 	void SetHand(EControllerHand Hand);
-	void PairController(AHandController* Controller);
+	void PairController(AHandControllerBase* Controller);
 
 	void Grip();
 	void Release();
-	void Draw();
-	void StopDraw();
 
 protected:
 	// Called when the game starts or when spawned
@@ -30,7 +31,6 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 private:
 
 	UPROPERTY(VisibleAnywhere)
@@ -50,11 +50,6 @@ private:
 	bool bIsClimbing = false;
 	FVector ClimbingStartLocation;
 
-	AHandController* OtherController;
-
-	class AStroke* CurrentStroke; 
-
-	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<class AStroke> StrokeClass;
+	AHandControllerBase* OtherController;
 
 };

@@ -1,11 +1,11 @@
 [
 	{
-		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HandController.cpp",
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HandControllerBase.cpp",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},
 	{
-		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HandController.h",
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HandControllerBase.h",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},
@@ -35,6 +35,16 @@
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},
 	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\PaintBrushHandController.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\PaintBrushHandController.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
 		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\PainterSaveGame.cpp",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
@@ -51,6 +61,16 @@
 	},
 	{
 		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\Stroke.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\UIPointerHandController.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\UIPointerHandController.h",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_Default\\LightPainter.220.rsp\"",
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},

@@ -36,8 +36,8 @@ private:
 	void GripRight();
 	void ReleaseRight();
 
-	void Draw();
-	void StopDraw();
+	void TriggerPressed();
+	void TriggerReleased();
 
 	void Save();
 	void Load();
@@ -45,9 +45,9 @@ private:
 	UPROPERTY()
 	class UCameraComponent* Camera;
 	UPROPERTY()
-	class AHandController* LeftController;
+	class AHandControllerBase* LeftController;
 	UPROPERTY()
-	class AHandController* RightController;
+	class AHandControllerBase* RightController;
 	UPROPERTY()
 	class USceneComponent* VRRoot;
 
@@ -60,7 +60,7 @@ private:
 	UPROPERTY()
 	TArray<class USplineMeshComponent*> TeleportPathMeshPool;
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AHandController> HandControllerClass;
+	TSubclassOf<AHandControllerBase> HandControllerClass;
 
 	UPROPERTY()
 	class UPostProcessComponent* Blinker;

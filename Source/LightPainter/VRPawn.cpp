@@ -10,7 +10,8 @@
 #include "Components/SplineComponent.h"
 #include "Components/SplineMeshComponent.h"
 #include "NavigationSystem.h"
-#include "HandController.h"
+#include "HandControllerBase.h"
+#include "PaintBrushHandController.h"
 #include "TimerManager.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "MotionControllerComponent.h"
@@ -57,14 +58,14 @@ void AVRPawn::BeginPlay()
 
 	}
 	
-	LeftController = GetWorld()->SpawnActor<AHandController>(HandControllerClass);
+	LeftController = GetWorld()->SpawnActor<APaintBrushHandController>(HandControllerClass);
 	if (LeftController != nullptr){
 		LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
 		LeftController->SetOwner(this);
 		LeftController->SetHand(EControllerHand::Left);
 	}
 
-	RightController = GetWorld()->SpawnActor<AHandController>(HandControllerClass);
+	RightController = GetWorld()->SpawnActor<APaintBrushHandController>(HandControllerClass);
 	if (RightController != nullptr){
 		RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
 		RightController->SetOwner(this);
@@ -72,6 +73,7 @@ void AVRPawn::BeginPlay()
 	}
 
 	LeftController->PairController(RightController);
+
 	
 }
 
@@ -105,8 +107,8 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("GripRight"),EInputEvent::IE_Pressed,this,&AVRPawn::GripRight);
 	PlayerInputComponent->BindAction(TEXT("GripRight"),EInputEvent::IE_Released,this,&AVRPawn::ReleaseRight);
 
-	PlayerInputComponent->BindAction(TEXT("Draw"),EInputEvent::IE_Pressed,this,&AVRPawn::Draw);
-	PlayerInputComponent->BindAction(TEXT("Draw"),EInputEvent::IE_Released,this,&AVRPawn::StopDraw);
+	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Pressed,this,&AVRPawn::TriggerPressed);
+	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Released,this,&AVRPawn::TriggerReleased);
 
 	PlayerInputComponent->BindAction(TEXT("Save"),EInputEvent::IE_Pressed,this,&AVRPawn::Save);
 	PlayerInputComponent->BindAction(TEXT("Load"),EInputEvent::IE_Pressed,this,&AVRPawn::Load);
@@ -143,14 +145,14 @@ void AVRPawn::ReleaseRight()
 	RightController->Release();
 }
 
-void AVRPawn::Draw()
+void AVRPawn::TriggerPressed()
 {
-	RightController->Draw();
+	RightController->TriggerPressed();
 }
 
-void AVRPawn::StopDraw()
+void AVRPawn::TriggerReleased()
 {
-	RightController->StopDraw();
+	RightController->TriggerReleased();
 }
 
 void AVRPawn::Save()
