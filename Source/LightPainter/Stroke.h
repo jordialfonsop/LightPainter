@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PainterSaveGame.h"
 #include "Stroke.generated.h"
+
 
 UCLASS()
 class LIGHTPAINTER_API AStroke : public AActor
@@ -16,6 +18,9 @@ public:
 	AStroke();
 
 	void Update(FVector CursorLocation);
+
+	FStrokeState SerializeToStruct() const;
+	static AStroke* SpawnAndDeserializeFromStruct(UWorld* World, const FStrokeState& StrokeState);
 
 private:
 
@@ -36,10 +41,8 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	class UInstancedStaticMeshComponent* JointsMeshes;
 
-	UPROPERTY(EditDefaultsOnly)
-	UMaterialInterface* SplineMaterial;
-
 	// State
 	FVector PreviousCursorLocation;
+	TArray<FVector> ControlPoints;
 
 };

@@ -39,6 +39,9 @@ private:
 	void Draw();
 	void StopDraw();
 
+	void Save();
+	void Load();
+
 	UPROPERTY()
 	class UCameraComponent* Camera;
 	UPROPERTY()
