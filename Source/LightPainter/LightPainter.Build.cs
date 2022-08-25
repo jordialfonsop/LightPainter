@@ -8,7 +8,7 @@ public class LightPainter : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "NavigationSystem" , "HeadMountedDisplay", "UMG" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "NavigationSystem" , "HeadMountedDisplay", "Engine" , "UMG" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
