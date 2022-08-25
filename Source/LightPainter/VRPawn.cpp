@@ -12,6 +12,7 @@
 #include "NavigationSystem.h"
 #include "HandControllerBase.h"
 #include "PaintBrushHandController.h"
+#include "UIPointerHandController.h"
 #include "TimerManager.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "MotionControllerComponent.h"
@@ -58,22 +59,25 @@ void AVRPawn::BeginPlay()
 
 	}
 	
-	LeftController = GetWorld()->SpawnActor<APaintBrushHandController>(HandControllerClass);
-	if (LeftController != nullptr){
-		LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
-		LeftController->SetOwner(this);
-		LeftController->SetHand(EControllerHand::Left);
+	if(HandControllerClass != nullptr){
+
+		LeftController = GetWorld()->SpawnActor<AHandControllerBase>();
+		if (LeftController != nullptr){
+			LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
+			LeftController->SetOwner(this);
+			LeftController->SetHand(EControllerHand::Left);
+		}
+
+		RightController = GetWorld()->SpawnActor<AHandControllerBase>(HandControllerClass);
+		if (RightController != nullptr){
+			RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
+			RightController->SetOwner(this);
+			RightController->SetHand(EControllerHand::Right);
+		}
+
+		LeftController->PairController(RightController);
+
 	}
-
-	RightController = GetWorld()->SpawnActor<APaintBrushHandController>(HandControllerClass);
-	if (RightController != nullptr){
-		RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
-		RightController->SetOwner(this);
-		RightController->SetHand(EControllerHand::Right);
-	}
-
-	LeftController->PairController(RightController);
-
 	
 }
 

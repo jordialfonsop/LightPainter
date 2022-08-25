@@ -42,7 +42,7 @@ private:
 	void Save();
 	void Load();
 
-	UPROPERTY()
+	UPROPERTY(EditDefaultsOnly)
 	class UCameraComponent* Camera;
 	UPROPERTY()
 	class AHandControllerBase* LeftController;
