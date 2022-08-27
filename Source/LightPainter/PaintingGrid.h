@@ -17,13 +17,19 @@ class LIGHTPAINTER_API UPaintingGrid : public UUserWidget
 
 public:
 
-	UFUNCTIONç(BlueprintCallable)
-	void AddPainting();
+	UFUNCTION(BlueprintCallable)
+	void AddPainting(int32 PaintingIndex, FString PaintingName);
 
+	void ClearPaintings();
 protected:
 
 	UPROPERTY(BlueprintReadOnly,VisibleAnywhere,meta = (BindWidget))
 	UUniformGridPanel* PaintingGrid;
+
+private:
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UPaintingGridCard> GridCardClass;
 
 	
 };

@@ -18,6 +18,7 @@
 #include "MotionControllerComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "PainterSaveGame.h"
+#include "PaintingGameMode.h"
 
 // Sets default values
 AVRPawn::AVRPawn()
@@ -115,7 +116,6 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Released,this,&AVRPawn::TriggerReleased);
 
 	PlayerInputComponent->BindAction(TEXT("Save"),EInputEvent::IE_Pressed,this,&AVRPawn::Save);
-	PlayerInputComponent->BindAction(TEXT("Load"),EInputEvent::IE_Pressed,this,&AVRPawn::Load);
 
 }
 
@@ -161,24 +161,11 @@ void AVRPawn::TriggerReleased()
 
 void AVRPawn::Save()
 {
-	UPainterSaveGame* Painting = UPainterSaveGame::Create();
-	Painting->SetState("Hello World!");
-	Painting->SerializeFromWorld(GetWorld());
-	Painting->Save();
-}
+	APaintingGameMode* GameMode = Cast<APaintingGameMode>(GetWorld()->GetAuthGameMode());
+	if (!GameMode) return;
+	GameMode->Save();
 
-void AVRPawn::Load()
-{
-	UPainterSaveGame* Painting = UPainterSaveGame::Load();
-	if (Painting)
-	{
-		Painting->DeserializeToWorld(GetWorld());
-		UE_LOG(LogTemp, Warning, TEXT("Painting State %s"), *Painting->GetState());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Not found"));
-	}
+	UGameplayStatics::OpenLevel(GetWorld(), TEXT("MainMenu"));
 }
 
 bool AVRPawn::FindTeleportDestination(TArray<FVector> &OutPath,FVector& OutLocation)

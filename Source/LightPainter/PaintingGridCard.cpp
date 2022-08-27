@@ -1,0 +1,18 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "PaintingGridCard.h"
+
+void UPaintingGridCard::SetPaintingName(FString Name)
+{
+	SlotName->SetText(FText::FromString(Name));
+
+	CardButton->OnClicked.AddDynamic(this,&UPaintingGridCard::CardButtonClicked);
+}
+
+void UPaintingGridCard::CardButtonClicked()
+{
+	UStereoLayerFunctionLibrary::ShowSplashScreen();
+
+	UGameplayStatics::OpenLevel(GetWorld(), TEXT("Canvas"), true, "SlotName=" + PaintingName);
+}

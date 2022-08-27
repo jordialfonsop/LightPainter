@@ -40,7 +40,17 @@ private:
 	void TriggerReleased();
 
 	void Save();
-	void Load();
+
+	bool FindTeleportDestination(TArray<FVector> &OutPath, FVector& OutLocation);
+	void UpdateDestinationMarker();
+	void UpdateSpline(const TArray<FVector> &Path);
+	void UpdateBlinkers();
+	void DrawTeleportPath(const TArray<FVector> &Path);
+
+	void BeginTeleport();
+	void FinishTeleport();
+
+	void StartFade(float FromAlpha, float ToAlpha);
 
 	UPROPERTY(EditDefaultsOnly)
 	class UCameraComponent* Camera;
@@ -88,16 +98,5 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	FVector TeleportProjectionExtent = FVector(100,100,100);
-
-	bool FindTeleportDestination(TArray<FVector> &OutPath, FVector& OutLocation);
-	void UpdateDestinationMarker();
-	void UpdateSpline(const TArray<FVector> &Path);
-	void UpdateBlinkers();
-	void DrawTeleportPath(const TArray<FVector> &Path);
-
-	void BeginTeleport();
-	void FinishTeleport();
-
-	void StartFade(float FromAlpha, float ToAlpha);
 
 };

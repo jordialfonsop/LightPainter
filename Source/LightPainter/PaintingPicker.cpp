@@ -1,0 +1,71 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "PaintingPicker.h"
+#include "PaintingGrid.h"
+#include "PaintingGridButtons.h"
+#include "PainterSaveGameIndex.h"
+
+// Sets default values
+APaintingPicker::APaintingPicker()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	SetRootComponent(Root);
+
+	PaintingGrid = CreateDefaultSubobject<UWidgetComponent>(TEXT("PaintingGrid"));
+	PaintingGrid->SetupAttachment(GetRootComponent());
+
+	Buttons = CreateDefaultSubobject<UWidgetComponent>(TEXT("Buttons"));
+	Buttons->SetupAttachment(GetRootComponent());
+
+}
+
+// Called when the game starts or when spawned
+void APaintingPicker::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	UPaintingGridButtons* PaintingGridButtonsWidget = Cast<UPaintingGridButtons>(PaintingGridButtons->GetUserWidgetObject());
+	
+	if (PaintingGridButtonsWidget){
+		PaintingGridButtonsWidget->SetParentPicker(this);
+	}
+
+	RefreshSlots();
+	
+}
+
+void APaintingPicker::RefreshSlots()
+{
+	
+	UPaintingGrid* PaintingGridWidget = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
+	if (!PaintingGridWidget) return;
+
+	PaintingGridWidget->ClearPaintings();
+
+	int32 Index = 0;
+	for (FString SlotName : UPainterSaveGameIndex::Load()->GetSlotNames())
+	{
+		PaintingGridWidget->AddPainting(Index, SlotName);
+		++Index;
+	}
+}
+
+void APaintingPicker::AddPainting()
+{
+	UPainterSaveGame::Create();
+
+	RefreshSlots();
+}
+
+void APaintingPicker::ToggleDeleteMode()
+{
+	UPaintingGrid* PaintingGridWidget = Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject());
+	if (!PaintingGridWidget) return;
+
+	PaintingGridWidget->ClearPaintings();
+}
+
