@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/WidgetComponent.h"
+#include "PaintingGrid.h"
 #include "PaintingPicker.generated.h"
 
 UCLASS()
@@ -19,13 +20,20 @@ public:
 	void AddPainting();
 	void ToggleDeleteMode();
 
+	void UpdateCurrentPage(int32 Offset);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 
+	void Refresh() { RefreshSlots(); RefreshDots(); }
 	void RefreshSlots();
+	void RefreshDots();
+
+	int32 GetNumberOfPages() const;
+	UPaintingGrid* GetPaintingGrid() const { return Cast<UPaintingGrid>(PaintingGrid->GetUserWidgetObject()); }
 
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* Root;
@@ -33,6 +41,7 @@ private:
 	UWidgetComponent* PaintingGrid;
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* PaintingGridButtons;
-	UPROPERTY(VisibleAnywhere)
-	UWidgetComponent* Buttons;
+
+	// State
+	int32 CurrentPage = 0;
 };

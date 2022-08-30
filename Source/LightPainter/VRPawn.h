@@ -39,7 +39,9 @@ private:
 	void TriggerPressed();
 	void TriggerReleased();
 
-	void Save();
+	void PaginateRight();
+	void PaginateLeft();
+	void UpdateCurrentPage(int32 Offset);
 
 	bool FindTeleportDestination(TArray<FVector> &OutPath, FVector& OutLocation);
 	void UpdateDestinationMarker();
@@ -70,7 +72,11 @@ private:
 	UPROPERTY()
 	TArray<class USplineMeshComponent*> TeleportPathMeshPool;
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AHandControllerBase> HandControllerClass;
+	TSubclassOf<AHandControllerBase> RightHandControllerClass;
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AHandControllerBase> LeftHandControllerClass;
+	UPROPERTY(EditDefaultsOnly)
+	float PaginationThumbstickThreshold = 0.9;
 
 	UPROPERTY()
 	class UPostProcessComponent* Blinker;
@@ -98,5 +104,8 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	FVector TeleportProjectionExtent = FVector(100,100,100);
+
+	// State
+	int32 LastPaginationOffset = 0;
 
 };

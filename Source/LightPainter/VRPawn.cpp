@@ -19,6 +19,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "PainterSaveGame.h"
 #include "PaintingGameMode.h"
+#include "PaintingPicker.h"
+#include "EngineUtils.h"
 
 // Sets default values
 AVRPawn::AVRPawn()
@@ -60,16 +62,16 @@ void AVRPawn::BeginPlay()
 
 	}
 	
-	if(HandControllerClass != nullptr){
+	if(RightHandControllerClass != nullptr && LeftHandControllerClass != nullptr){
 
-		LeftController = GetWorld()->SpawnActor<AHandControllerBase>();
+		LeftController = GetWorld()->SpawnActor<AHandControllerBase>(LeftHandControllerClass);
 		if (LeftController != nullptr){
 			LeftController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
 			LeftController->SetOwner(this);
 			LeftController->SetHand(EControllerHand::Left);
 		}
 
-		RightController = GetWorld()->SpawnActor<AHandControllerBase>(HandControllerClass);
+		RightController = GetWorld()->SpawnActor<AHandControllerBase>(RightHandControllerClass);
 		if (RightController != nullptr){
 			RightController->AttachToComponent(VRRoot, FAttachmentTransformRules::KeepRelativeTransform);
 			RightController->SetOwner(this);
@@ -115,8 +117,28 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Pressed,this,&AVRPawn::TriggerPressed);
 	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Released,this,&AVRPawn::TriggerReleased);
 
-	PlayerInputComponent->BindAction(TEXT("Save"),EInputEvent::IE_Pressed,this,&AVRPawn::Save);
+	PlayerInputComponent->BindAction(TEXT("PaginateRight"),EInputEvent::IE_Pressed, this, &AVRPawn::PaginateRight);
+	PlayerInputComponent->BindAction(TEXT("PaginateLeft"),EInputEvent::IE_Pressed, this, &AVRPawn::PaginateLeft);
 
+}
+
+void AVRPawn::PaginateRight()
+{
+	UpdateCurrentPage(1.0);
+}
+
+void AVRPawn::PaginateLeft()
+{
+	UpdateCurrentPage(-1.0);
+}
+
+
+void AVRPawn::UpdateCurrentPage(int32 Offset)
+{
+	for (TActorIterator<APaintingPicker> PaintingPickerItr(GetWorld()); PaintingPickerItr; ++PaintingPickerItr)
+	{
+		PaintingPickerItr->UpdateCurrentPage(Offset);
+	}
 }
 
 void AVRPawn::MoveUp(float AxisValue)
@@ -157,15 +179,6 @@ void AVRPawn::TriggerPressed()
 void AVRPawn::TriggerReleased()
 {
 	RightController->TriggerReleased();
-}
-
-void AVRPawn::Save()
-{
-	APaintingGameMode* GameMode = Cast<APaintingGameMode>(GetWorld()->GetAuthGameMode());
-	if (!GameMode) return;
-	GameMode->Save();
-
-	UGameplayStatics::OpenLevel(GetWorld(), TEXT("MainMenu"));
 }
 
 bool AVRPawn::FindTeleportDestination(TArray<FVector> &OutPath,FVector& OutLocation)

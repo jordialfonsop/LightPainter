@@ -41,6 +41,13 @@ void APaintingGameMode::Load()
 	}
 }
 
+void APaintingGameMode::SaveAndQuit()
+{
+	Save();
+
+	UGameplayStatics::OpenLevel(GetWorld(), TEXT("MainMenu"));
+}
+
 
 
 void APaintingGameMode::BeginPlay()
