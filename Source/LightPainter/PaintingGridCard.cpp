@@ -15,4 +15,5 @@ void UPaintingGridCard::CardButtonClicked()
 	UStereoLayerFunctionLibrary::ShowSplashScreen();
 
 	UGameplayStatics::OpenLevel(GetWorld(), TEXT("Canvas"), true, "SlotName=" + PaintingName);
+	UE_LOG(LogTemp,Warning,TEXT("options is in cardbuttonClicked : %s"),*PaintingName);
 }
