@@ -8,6 +8,8 @@ void UPaintingGridCard::SetPaintingName(FString Name)
 {
 	SlotName->SetText(FText::FromString(Name));
 
+	PaintingName = Name;
+
 	CardButton->OnClicked.AddDynamic(this,&UPaintingGridCard::CardButtonClicked);
 }
 
@@ -19,8 +21,10 @@ void UPaintingGridCard::CardButtonClicked()
 	}else{
 		UStereoLayerFunctionLibrary::ShowSplashScreen();
 
-		UGameplayStatics::OpenLevel(GetWorld(), TEXT("Canvas"), true, "SlotName=" + PaintingName);
 		UE_LOG(LogTemp,Warning,TEXT("options is in cardbuttonClicked : %s"),*PaintingName);
+
+		UGameplayStatics::OpenLevel(GetWorld(), TEXT("Canvas"), true, "SlotName=" + PaintingName);
+		
 
 	}
 

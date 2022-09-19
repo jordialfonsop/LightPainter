@@ -20,7 +20,6 @@ void APaintingGameMode::InitGame(const FString & MapName, const FString & Option
 void APaintingGameMode::Save()
 {
     UPainterSaveGame* Painting = UPainterSaveGame::Load(SlotName);
-	//UE_LOG(LogTemp, Warning, TEXT("SlotName on Save is: %s"), *SlotName);
 	if (Painting)
 	{
 		Painting->SerializeFromWorld(GetWorld());

@@ -21,6 +21,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	class AHandControllerBase* GetRightController();
 
+	UFUNCTION(BlueprintCallable)
+	void BeginTeleport(FVector Point);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -51,13 +54,6 @@ private:
 	void PaginateLeft();
 	void UpdateCurrentPage(int32 Offset);
 
-	bool FindTeleportDestination(TArray<FVector> &OutPath, FVector& OutLocation);
-	void UpdateDestinationMarker();
-	void UpdateSpline(const TArray<FVector> &Path);
-	void UpdateBlinkers();
-	void DrawTeleportPath(const TArray<FVector> &Path);
-
-	void BeginTeleport();
 	void FinishTeleport();
 
 	void StartFade(float FromAlpha, float ToAlpha);
@@ -71,14 +67,6 @@ private:
 	UPROPERTY()
 	class USceneComponent* VRRoot;
 
-	UPROPERTY(VisibleAnywhere)
-	class USplineComponent* TeleportPath;
-	UPROPERTY(EditDefaultsOnly)
-	class UStaticMesh* TeleportMesh;
-	UPROPERTY(EditDefaultsOnly)
-	class UMaterialInterface* TeleportMaterial;
-	UPROPERTY()
-	TArray<class USplineMeshComponent*> TeleportPathMeshPool;
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AHandControllerBase> RightHandControllerClass;
 	UPROPERTY(EditDefaultsOnly)
@@ -86,32 +74,10 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float PaginationThumbstickThreshold = 0.9;
 
-	UPROPERTY()
-	class UPostProcessComponent* Blinker;
-	UPROPERTY()
-	class UMaterialInstanceDynamic* BlinkerMaterial;
-	UPROPERTY(EditAnywhere)
-	class UMaterialInterface* BlinkerMaterialBase;
-
-	UPROPERTY(EditAnywhere)
-	class UCurveFloat* RadiusVelocity;
-
-	UPROPERTY(VisibleAnywhere)
-	class UStaticMeshComponent* DestinationMarker;
-
 	FVector DestinationPoint;
 
 	UPROPERTY(EditAnywhere)
-	float DestinationMarkerSpeed = 1000.0f;
-
-	UPROPERTY(EditAnywhere)
 	float FadeTime = 1.0f;
-
-	UPROPERTY(EditAnywhere)
-	float RadiusValue = 0.6f;
-
-	UPROPERTY(EditAnywhere)
-	FVector TeleportProjectionExtent = FVector(100,100,100);
 
 	// State
 	int32 LastPaginationOffset = 0;
