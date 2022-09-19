@@ -20,6 +20,25 @@ public:
 	void TriggerPressed() override;
 	void TriggerReleased() override;
 
+	UFUNCTION(BlueprintCallable)
+	void ToggleDeleteMode();
+
+	UFUNCTION(BlueprintCallable)
+	void SetLocation(FVector Cone);
+
+	UFUNCTION(BlueprintCallable)
+	void SetStrokeClass(TSubclassOf<class AStroke> Class);
+
+	UFUNCTION(BlueprintCallable)
+	bool GetDeleteMode();
+
+	UFUNCTION(BlueprintCallable)
+	bool GetDeleting();
+
+
+	UFUNCTION(BlueprintCallable)
+	TSubclassOf<class AStroke> GetStrokeClass();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -30,9 +49,21 @@ public:
 
 private:
 
+	virtual void ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor) override;
+
 	class AStroke* CurrentStroke; 
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<class AStroke> StrokeClass;
+
+	UPROPERTY(EditAnywhere)
+	class USoundBase* DeleteSound;
+
+	bool deleteMode = false;
+
+	bool deleting = false;
+
+	UPROPERTY(EditDefaultsOnly)
+	FVector Location; 
 
 };

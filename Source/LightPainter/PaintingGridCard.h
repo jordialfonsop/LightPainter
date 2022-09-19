@@ -9,7 +9,7 @@
 #include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/StereoLayerFunctionLibrary.h"
-
+#include "PaintingPicker.h"
 #include "PaintingGridCard.generated.h"
 
 /**
@@ -22,6 +22,9 @@ class LIGHTPAINTER_API UPaintingGridCard : public UUserWidget
 
 public:
 	void SetPaintingName(FString Name);
+
+	void SetParent(APaintingPicker* NewPaintingPicker) { PaintingPicker = NewPaintingPicker; }
+
 
 protected:
 
@@ -38,5 +41,7 @@ private:
 
 	// State
 	FString PaintingName;
+
+	class APaintingPicker* PaintingPicker;
 
 };

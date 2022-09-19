@@ -20,7 +20,7 @@ class LIGHTPAINTER_API UPaintingGrid : public UUserWidget
 public:
 
 	UFUNCTION(BlueprintCallable)
-	void AddPainting(int32 PaintingIndex, FString PaintingName);
+	void AddPainting(int32 PaintingIndex, FString PaintingName, APaintingPicker* PaintingPicker);
 	void AddPaginationDot(bool Active);
 
 	void ClearPaintings();

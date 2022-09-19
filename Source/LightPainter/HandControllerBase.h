@@ -17,6 +17,7 @@ public:
 
 	virtual void TriggerPressed() {}
 	virtual void TriggerReleased() {}
+	virtual void ToggleMenuPressed() {}
 
 	void SetHand(EControllerHand Hand);
 	void PairController(AHandControllerBase* Controller);
@@ -27,6 +28,11 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	virtual void ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	UFUNCTION()
+	virtual void ActorEndOverlap(AActor* OverlappedActor, AActor* OtherActor);
 
 public:	
 	// Called every frame
@@ -39,10 +45,7 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	class UHapticFeedbackEffect_Base* HapticEffect;
 
-	UFUNCTION()
-	void ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
-	UFUNCTION()
-	void ActorEndOverlap(AActor* OverlappedActor, AActor* OtherActor);
+	
 
 	bool CanClimb() const;
 

@@ -23,6 +23,8 @@ public:
 	void AddSaveGame(UPainterSaveGame * SaveGame);
 
 	TArray<FString> GetSlotNames() const { return SlotNames; }
+	void AddPainting(const FString& Name) { SlotNames.Add(Name); }
+	void RemovePainting(const FString& Name) { SlotNames.Remove(Name); }
 
 private:
 

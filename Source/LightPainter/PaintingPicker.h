@@ -20,7 +20,11 @@ public:
 	void AddPainting();
 	void ToggleDeleteMode();
 
+	bool GetDeleteMode();
+
 	void UpdateCurrentPage(int32 Offset);
+
+	void DeleteItem(FString ItemID);
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,4 +48,6 @@ private:
 
 	// State
 	int32 CurrentPage = 0;
+
+	bool deleteMode = false;
 };

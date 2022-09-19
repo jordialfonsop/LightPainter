@@ -30,7 +30,9 @@ class LIGHTPAINTER_API UPainterSaveGame : public USaveGame
 public:
 	static UPainterSaveGame* Create();
 	static UPainterSaveGame* Load(FString SlotName);
+
 	bool Save();
+	void Delete();
 
 	void SetState(FString NewState) { State = NewState; }
 	FString GetState() const { return State; }

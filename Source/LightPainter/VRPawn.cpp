@@ -48,6 +48,16 @@ AVRPawn::AVRPawn()
 
 }
 
+class AHandControllerBase* AVRPawn::GetLeftController()
+{
+	return LeftController;
+}
+
+class AHandControllerBase* AVRPawn::GetRightController()
+{
+	return RightController;
+}
+
 // Called when the game starts or when spawned
 void AVRPawn::BeginPlay()
 {
@@ -117,6 +127,8 @@ void AVRPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Pressed,this,&AVRPawn::TriggerPressed);
 	PlayerInputComponent->BindAction(TEXT("Trigger"),EInputEvent::IE_Released,this,&AVRPawn::TriggerReleased);
 
+	PlayerInputComponent->BindAction(TEXT("ToggleMenu"),EInputEvent::IE_Pressed,this,&AVRPawn::TogglePressed);
+
 	PlayerInputComponent->BindAction(TEXT("PaginateRight"),EInputEvent::IE_Pressed, this, &AVRPawn::PaginateRight);
 	PlayerInputComponent->BindAction(TEXT("PaginateLeft"),EInputEvent::IE_Pressed, this, &AVRPawn::PaginateLeft);
 
@@ -179,6 +191,11 @@ void AVRPawn::TriggerPressed()
 void AVRPawn::TriggerReleased()
 {
 	RightController->TriggerReleased();
+}
+
+void AVRPawn::TogglePressed()
+{
+	LeftController->ToggleMenuPressed();
 }
 
 bool AVRPawn::FindTeleportDestination(TArray<FVector> &OutPath,FVector& OutLocation)

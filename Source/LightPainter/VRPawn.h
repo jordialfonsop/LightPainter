@@ -15,6 +15,12 @@ public:
 	// Sets default values for this character's properties
 	AVRPawn();
 
+	UFUNCTION(BlueprintCallable)
+	class AHandControllerBase* GetLeftController();
+
+	UFUNCTION(BlueprintCallable)
+	class AHandControllerBase* GetRightController();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -38,6 +44,8 @@ private:
 
 	void TriggerPressed();
 	void TriggerReleased();
+
+	void TogglePressed();
 
 	void PaginateRight();
 	void PaginateLeft();

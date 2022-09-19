@@ -20,8 +20,18 @@ class LIGHTPAINTER_API APaletteMenuHandController : public AHandControllerBase
 public:
 	APaletteMenuHandController();
 
+	void ToggleMenuPressed() override;
+
 private:
 
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* PaletteMenu;
+
+	UPROPERTY(EditAnywhere)
+	class USoundBase* ToggleSoundOn;
+
+	UPROPERTY(EditAnywhere)
+	class USoundBase* ToggleSoundOff;
+	
+	bool isActive = true;
 };

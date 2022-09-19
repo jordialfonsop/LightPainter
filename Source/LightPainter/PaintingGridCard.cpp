@@ -3,6 +3,7 @@
 
 #include "PaintingGridCard.h"
 
+
 void UPaintingGridCard::SetPaintingName(FString Name)
 {
 	SlotName->SetText(FText::FromString(Name));
@@ -12,8 +13,15 @@ void UPaintingGridCard::SetPaintingName(FString Name)
 
 void UPaintingGridCard::CardButtonClicked()
 {
-	UStereoLayerFunctionLibrary::ShowSplashScreen();
 
-	UGameplayStatics::OpenLevel(GetWorld(), TEXT("Canvas"), true, "SlotName=" + PaintingName);
-	UE_LOG(LogTemp,Warning,TEXT("options is in cardbuttonClicked : %s"),*PaintingName);
+	if(PaintingPicker->GetDeleteMode()){
+		PaintingPicker->DeleteItem(PaintingName);
+	}else{
+		UStereoLayerFunctionLibrary::ShowSplashScreen();
+
+		UGameplayStatics::OpenLevel(GetWorld(), TEXT("Canvas"), true, "SlotName=" + PaintingName);
+		UE_LOG(LogTemp,Warning,TEXT("options is in cardbuttonClicked : %s"),*PaintingName);
+
+	}
+
 }

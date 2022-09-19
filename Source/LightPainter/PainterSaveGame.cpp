@@ -7,6 +7,7 @@
 #include "EngineUtils.h"
 #include "Misc/Guid.h"
 #include "PainterSaveGameIndex.h"
+#include "HAL/FileManager.h"
 
 #include "Stroke.h"
 
@@ -30,6 +31,17 @@ UPainterSaveGame* UPainterSaveGame::Load(FString SlotName)
 bool UPainterSaveGame::Save()
 {
 	return UGameplayStatics::SaveGameToSlot(this, SlotName, 0);
+}
+
+void UPainterSaveGame::Delete()
+{
+	
+	auto List = UPainterSaveGameIndex::Load();
+	List->RemovePainting(SlotName);
+	List->Save();
+
+	UGameplayStatics::DeleteGameInSlot(SlotName, 0);
+	
 }
 
 void UPainterSaveGame::SerializeFromWorld(UWorld * World)

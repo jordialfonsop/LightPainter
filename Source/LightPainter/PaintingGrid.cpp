@@ -6,13 +6,14 @@
 #include "Components/HorizontalBoxSlot.h"
 #include "PaintingGridCard.h"
 
-void UPaintingGrid::AddPainting(int32 PaintingIndex, FString PaintingName)
+void UPaintingGrid::AddPainting(int32 PaintingIndex, FString PaintingName, APaintingPicker* PaintingPicker)
 {
 	if (!PaintingGrid) return;
 	UPaintingGridCard* NewWidget = CreateWidget<UPaintingGridCard>(GetWorld(), GridCardClass);
 	if (!NewWidget) return;
 
 	NewWidget->SetPaintingName(PaintingName);
+	NewWidget->SetParent(PaintingPicker);
 
 	USizeBox* CardContainer = Cast<USizeBox>(PaintingGrid->GetChildAt(PaintingIndex));
 	if (!CardContainer) return;

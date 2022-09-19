@@ -4,6 +4,7 @@
 #include "PaintingPicker.h"
 #include "PaintingGridButtons.h"
 #include "PainterSaveGameIndex.h"
+#include "PainterSaveGame.h"
 
 // Sets default values
 APaintingPicker::APaintingPicker()
@@ -54,7 +55,7 @@ void APaintingPicker::RefreshSlots()
 	auto SlotNames = UPainterSaveGameIndex::Load()->GetSlotNames();
 	for (int32 i = 0; i < GetPaintingGrid()->GetNumberOfSlots() && StartOffset + i < SlotNames.Num(); ++i)
 	{
-		GetPaintingGrid()->AddPainting(i, SlotNames[StartOffset + i]);
+		GetPaintingGrid()->AddPainting(i, SlotNames[StartOffset + i], this);
 	}
 }
 
@@ -81,7 +82,12 @@ void APaintingPicker::ToggleDeleteMode()
 {
 	if (!GetPaintingGrid()) return;
 
-	GetPaintingGrid()->ClearPaintings();
+	deleteMode = !deleteMode; 
+}
+
+bool APaintingPicker::GetDeleteMode()
+{
+	return deleteMode;
 }
 
 int32 APaintingPicker::GetNumberOfPages() const
@@ -93,4 +99,13 @@ int32 APaintingPicker::GetNumberOfPages() const
 
 	return FMath::CeilToInt((float) TotalNumberOfSlot / SlotsPerPage);
 }
+
+void APaintingPicker::DeleteItem(FString ItemID)
+{
+	auto Slot = UPainterSaveGame::Load(ItemID);
+	Slot->Delete();
+
+	Refresh();
+}
+
 
