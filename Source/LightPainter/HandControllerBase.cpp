@@ -53,6 +53,11 @@ void AHandControllerBase::Release()
 	}
 }
 
+UMotionControllerComponent* AHandControllerBase::GetMotionController()
+{
+	return MotionController;
+}
+
 void AHandControllerBase::PairController(AHandControllerBase* Controller)
 {
 	OtherController = Controller;

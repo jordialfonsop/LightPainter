@@ -2,6 +2,7 @@
 
 
 #include "TeleportStation.h"
+#include "VRPawn.h"
 
 // Sets default values
 ATeleportStation::ATeleportStation()
@@ -26,6 +27,8 @@ FVector ATeleportStation::GetDestination()
 void ATeleportStation::BeginPlay()
 {
 	Super::BeginPlay();
+
+	OnActorBeginOverlap.AddDynamic(this,&ATeleportStation::ActorBeginOverlap);
 	
 }
 
@@ -34,5 +37,16 @@ void ATeleportStation::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ATeleportStation::ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor)
+{
+	TArray<AActor*> OverlappingActors;
+	GetOverlappingActors(OverlappingActors);
+	for (int32 i =0; i < OverlappingActors.Num();i++){
+		if (OverlappingActors[i]->ActorHasTag(TEXT("VRPawn"))){
+			Cast<AVRPawn>(OverlappingActors[i])->BeginTeleport(Destination);
+		};
+	}
 }
 

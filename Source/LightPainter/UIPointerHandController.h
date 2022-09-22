@@ -20,9 +20,11 @@ public:
 
 	void TriggerPressed() override;
 	void TriggerReleased() override;
+
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	class UWidgetInteractionComponent* Interaction;
 	
 private:
 
-	UPROPERTY(VisibleAnywhere)
-	class UWidgetInteractionComponent* Interaction;
 };

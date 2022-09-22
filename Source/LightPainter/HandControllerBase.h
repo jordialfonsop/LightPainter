@@ -25,6 +25,9 @@ public:
 	void Grip();
 	void Release();
 
+	UFUNCTION(BlueprintCallable)
+	class UMotionControllerComponent* GetMotionController();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

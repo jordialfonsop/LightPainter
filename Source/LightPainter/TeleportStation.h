@@ -28,6 +28,8 @@ public:
 
 private:
 
+	virtual void ActorBeginOverlap(AActor* OverlappedActor, AActor* OtherActor);
+
 	UPROPERTY(EditAnywhere)
 	class UStaticMeshComponent* Teleport;
 

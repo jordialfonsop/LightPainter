@@ -45,6 +45,8 @@ private:
 	UWidgetComponent* PaintingGrid;
 	UPROPERTY(VisibleAnywhere)
 	UWidgetComponent* PaintingGridButtons;
+	UPROPERTY(VisibleAnywhere)
+	UWidgetComponent* LightPainter;
 
 	// State
 	int32 CurrentPage = 0;

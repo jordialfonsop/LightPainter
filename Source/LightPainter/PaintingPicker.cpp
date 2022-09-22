@@ -21,6 +21,9 @@ APaintingPicker::APaintingPicker()
 	PaintingGridButtons = CreateDefaultSubobject<UWidgetComponent>(TEXT("PaintingGridButtons"));
 	PaintingGridButtons->SetupAttachment(GetRootComponent());
 
+	LightPainter = CreateDefaultSubobject<UWidgetComponent>(TEXT("LightPainter"));
+	LightPainter->SetupAttachment(GetRootComponent());
+
 }
 
 // Called when the game starts or when spawned
