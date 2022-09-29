@@ -21,6 +21,24 @@ public:
 	void Load();
 
 	UFUNCTION(BlueprintCallable)
+	void SetStartLocation(FVector NewStartLocation);
+	UFUNCTION(BlueprintCallable)
+	FVector GetStartLocation();
+
+	UFUNCTION(BlueprintCallable)
+	void SetHoops(int32 NewHoops);
+	UFUNCTION(BlueprintCallable)
+	int32 GetHoops();
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetRequiredHoops() {return RequiredHoops;}
+	UFUNCTION(BlueprintCallable)
+	void SetRequiredHoops(int32 NewRequiredHoops) {RequiredHoops = NewRequiredHoops;}
+	UFUNCTION(BlueprintCallable)
+	bool IsRequiredHoops();
+
+
+	UFUNCTION(BlueprintCallable)
 	void SaveAndQuit();
 
 protected:
@@ -29,5 +47,8 @@ protected:
 private:
 	// State
 	FString SlotName;
+
+	UPROPERTY(EditAnywhere);
+	int32 RequiredHoops = 20;
 
 };

@@ -28,6 +28,27 @@ public:
 	UFUNCTION(BlueprintCallable)
 	class UMotionControllerComponent* GetMotionController();
 
+	UFUNCTION(BlueprintCallable)
+	AHandControllerBase* GetOtherController();
+
+	UFUNCTION(BlueprintCallable)
+	bool GetIsGrabbing() {return bIsGrabbing;}
+
+	UFUNCTION(BlueprintCallable)
+	bool GetCanGrab() {return bCanGrab;}
+
+	UFUNCTION(BlueprintCallable)
+	bool GetGrabActorReset() {return GrabActorReset;}
+
+	UFUNCTION(BlueprintCallable)
+	void SetGrabActorReset(bool NewGrabActorReset){ GrabActorReset = NewGrabActorReset;}
+
+	UFUNCTION(BlueprintCallable)
+	AActor* GetGrabActor() {return GrabActor;}
+
+	UFUNCTION(BlueprintCallable)
+	void SetGrabActor(AActor* NewGrabActor){ GrabActor = NewGrabActor;}
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -46,15 +67,25 @@ private:
 	class UMotionControllerComponent* MotionController;
 
 	UPROPERTY(EditDefaultsOnly)
-	class UHapticFeedbackEffect_Base* HapticEffect;
+	class UHapticFeedbackEffect_Base* HapticEffectClimb;
+
+	UPROPERTY(EditDefaultsOnly)
+	class UHapticFeedbackEffect_Base* HapticEffectGrab;
 
 	
 
 	bool CanClimb() const;
+	bool CanGrab();
 
 	bool bCanClimb = false;
 	bool bIsClimbing = false;
 	FVector ClimbingStartLocation;
+
+	bool bCanGrab = false;
+	bool bIsGrabbing = false;
+	bool GrabActorReset = false;
+
+	AActor* GrabActor;
 
 	AHandControllerBase* OtherController;
 

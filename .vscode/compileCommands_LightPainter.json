@@ -10,6 +10,26 @@
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
 	},
 	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HoopCount.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HoopCount.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HoopsLocked.cpp",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
+		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\HoopsLocked.h",
+		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter\\LightPainter.220.rsp\"",
+		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"
+	},
+	{
 		"file": "G:\\Unreal Projects\\LightPainter\\Source\\LightPainter\\LightPainter.Build.cs",
 		"command": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX64\\x64\\cl.exe\" @\"G:\\Unreal Projects\\LightPainter\\.vscode\\compileCommands_LightPainter\\LightPainter.220.rsp\"",
 		"directory": "F:\\Unreal Engine\\UE_5.0\\Engine\\Source"

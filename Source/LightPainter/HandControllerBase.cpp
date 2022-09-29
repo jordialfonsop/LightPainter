@@ -37,6 +37,13 @@ void AHandControllerBase::Grip()
 			Character->GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Flying);
 		}
 	}
+
+	if(bCanGrab && !bIsGrabbing){
+
+		bIsGrabbing = true;
+		OtherController->bIsGrabbing = false;
+
+	}
 }
 
 void AHandControllerBase::Release()
@@ -51,11 +58,22 @@ void AHandControllerBase::Release()
 			Character->GetCharacterMovement()->SetMovementMode(EMovementMode::MOVE_Falling);
 		}
 	}
+
+	if (bIsGrabbing)
+	{
+		bIsGrabbing = false;
+
+	}
 }
 
 UMotionControllerComponent* AHandControllerBase::GetMotionController()
 {
 	return MotionController;
+}
+
+AHandControllerBase* AHandControllerBase::GetOtherController()
+{
+	return OtherController;
 }
 
 void AHandControllerBase::PairController(AHandControllerBase* Controller)
@@ -99,17 +117,33 @@ void AHandControllerBase::ActorBeginOverlap(AActor* OverlappedActor, AActor* Oth
 			APlayerController* Controller = Cast<APlayerController>(Pawn->GetController());
 			if (Controller != nullptr)
 			{
-				Controller->PlayHapticEffect(HapticEffect, MotionController->GetTrackingSource());
+				Controller->PlayHapticEffect(HapticEffectClimb, MotionController->GetTrackingSource());
 			}
 		}
 	}
 	bCanClimb = bNewCanClimb;
+
+	bool bNewCanGrab = CanGrab();
+	if (!bCanGrab && bNewCanGrab)
+	{
+		APawn* Pawn = Cast<APawn>(GetAttachParentActor());
+		if (Pawn != nullptr)
+		{	
+			APlayerController* Controller = Cast<APlayerController>(Pawn->GetController());
+			if (Controller != nullptr)
+			{
+				Controller->PlayHapticEffect(HapticEffectGrab, MotionController->GetTrackingSource());
+			}
+		}
+	}
+	bCanGrab = bNewCanGrab;
 
 }
 
 void AHandControllerBase::ActorEndOverlap(AActor* OverlappedActor, AActor* OtherActor)
 {
 	bCanClimb = CanClimb();
+	bCanGrab = CanGrab();
 }
 
 bool AHandControllerBase::CanClimb() const
@@ -122,6 +156,22 @@ bool AHandControllerBase::CanClimb() const
 		};
 	}
 
+	return false;
+	
+}
+
+bool AHandControllerBase::CanGrab()
+{
+	TArray<AActor*> OverlappingActors;
+	GetOverlappingActors(OverlappingActors);
+	for (int32 i =0; i < OverlappingActors.Num();i++){
+		if (OverlappingActors[i]->ActorHasTag(TEXT("Grabbable"))){
+			GrabActor = OverlappingActors[i];
+			GrabActorReset = false;
+			return true;
+		};
+	}
+	GrabActor = nullptr;
 	return false;
 	
 }

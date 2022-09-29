@@ -37,6 +37,16 @@ public:
 	void SetState(FString NewState) { State = NewState; }
 	FString GetState() const { return State; }
 
+	UFUNCTION(BlueprintCallable)
+	void SetHoops(int32 NewHoops) { Hoops = NewHoops; }
+	UFUNCTION(BlueprintCallable)
+	int32 GetHoops() { return Hoops; }
+
+	UFUNCTION(BlueprintCallable)
+	void SetStartLocation(FVector NewStartLocation) { StartLocation.Set(NewStartLocation.X,NewStartLocation.Y,NewStartLocation.Z); }
+	UFUNCTION(BlueprintCallable)
+	FVector GetStartLocation() { return StartLocation; }
+
 	void SerializeFromWorld(UWorld * World);
 	void DeserializeToWorld(UWorld * World);
 
@@ -54,5 +64,11 @@ private:
 
 	UPROPERTY()
 	TArray<FStrokeState> Strokes;
+
+	UPROPERTY(EditAnywhere)
+	int32 Hoops;
+
+	UPROPERTY(EditAnywhere)
+	FVector StartLocation;
 	
 };

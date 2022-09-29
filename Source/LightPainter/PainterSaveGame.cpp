@@ -15,6 +15,8 @@ UPainterSaveGame * UPainterSaveGame::Create()
 {
 	UPainterSaveGame* NewSaveGame = Cast<UPainterSaveGame>(UGameplayStatics::CreateSaveGameObject(StaticClass()));
 	NewSaveGame->SlotName = FGuid::NewGuid().ToString();
+	NewSaveGame->Hoops = 0;
+	NewSaveGame->StartLocation = FVector(-4860,2664,1121);
 	if(!NewSaveGame->Save()) return nullptr;
 
 	UPainterSaveGameIndex* Index = UPainterSaveGameIndex::Load();

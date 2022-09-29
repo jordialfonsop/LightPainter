@@ -22,6 +22,12 @@ public:
 	class AHandControllerBase* GetRightController();
 
 	UFUNCTION(BlueprintCallable)
+	bool GetIsNight() {return isNight;}
+	
+	UFUNCTION(BlueprintCallable)
+	void SetIsNight(bool NewIsNight) {isNight = NewIsNight;};
+
+	UFUNCTION(BlueprintCallable)
 	void BeginTeleport(FVector Point);
 
 protected:
@@ -78,6 +84,9 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float FadeTime = 1.0f;
+
+	UPROPERTY()
+	bool isNight;
 
 	// State
 	int32 LastPaginationOffset = 0;
