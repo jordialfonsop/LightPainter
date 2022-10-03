@@ -49,6 +49,8 @@ void APaintingGameMode::SetStartLocation(FVector NewStartLocation)
 	if (Painting)
 	{
 		Painting->SetStartLocation(NewStartLocation);
+		UE_LOG(LogTemp, Warning, TEXT("New Start Location: %f,%f,%f"), Painting->GetStartLocation().X,Painting->GetStartLocation().Y,Painting->GetStartLocation().Z);
+		Painting->Save();
 
 	}
 	else
@@ -62,13 +64,14 @@ FVector APaintingGameMode::GetStartLocation()
 	UPainterSaveGame* Painting = UPainterSaveGame::Load(SlotName);
 	if (Painting)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("Get Start Location: %f,%f,%f"), Painting->GetStartLocation().X,Painting->GetStartLocation().Y,Painting->GetStartLocation().Z);
 		return Painting->GetStartLocation();
 
 	}
 	else
 	{
-		return FVector(-4860,2664,1121);
 		UE_LOG(LogTemp, Warning, TEXT("Game slot not found: %s"), *SlotName);
+		return FVector(-4860,2664,1121);
 	}
 }
 
@@ -78,6 +81,8 @@ void APaintingGameMode::SetHoops(int32 NewHoops)
 	if (Painting)
 	{
 		Painting->SetHoops(NewHoops);
+		UE_LOG(LogTemp, Warning, TEXT("Current hoops after SetHoops: %d"), Painting->GetHoops());
+		Painting->Save();
 
 	}
 	else
@@ -91,13 +96,14 @@ int32 APaintingGameMode::GetHoops()
 	UPainterSaveGame* Painting = UPainterSaveGame::Load(SlotName);
 	if (Painting)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("GetHoops: %d"), Painting->GetHoops());
 		return Painting->GetHoops();
 
 	}
 	else
 	{
-		return -1;
 		UE_LOG(LogTemp, Warning, TEXT("Game slot not found: %s"), *SlotName);
+		return -1;
 	}
 }
 
@@ -111,16 +117,15 @@ bool APaintingGameMode::IsRequiredHoops()
 	}
 	else
 	{
-		return false;
 		UE_LOG(LogTemp, Warning, TEXT("Game slot not found: %s"), *SlotName);
+		return false;
 	}
 }
 
 void APaintingGameMode::SaveAndQuit()
 {
 	SetStartLocation(UGameplayStatics::GetPlayerPawn(GetWorld(),0)->GetActorLocation());
-	UE_LOG(LogTemp, Warning, TEXT("New Start Location: %f,%f,%f"), GetStartLocation().X,GetStartLocation().Y,GetStartLocation().Z);
-
+	
 	Save();
 
 	UGameplayStatics::OpenLevel(GetWorld(), TEXT("MainMenu"));

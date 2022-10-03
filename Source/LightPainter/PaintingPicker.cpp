@@ -85,7 +85,8 @@ void APaintingPicker::ToggleDeleteMode()
 {
 	if (!GetPaintingGrid()) return;
 
-	deleteMode = !deleteMode; 
+	deleteMode = !deleteMode;
+	GetPaintingGrid()->SetDeleteMode(deleteMode);
 }
 
 bool APaintingPicker::GetDeleteMode()

@@ -34,16 +34,13 @@ public:
 	bool Save();
 	void Delete();
 
-	void SetState(FString NewState) { State = NewState; }
-	FString GetState() const { return State; }
-
 	UFUNCTION(BlueprintCallable)
-	void SetHoops(int32 NewHoops) { Hoops = NewHoops; }
+	void SetHoops(int32 NewHoops) { Hoops = NewHoops; Save(); }
 	UFUNCTION(BlueprintCallable)
 	int32 GetHoops() { return Hoops; }
 
 	UFUNCTION(BlueprintCallable)
-	void SetStartLocation(FVector NewStartLocation) { StartLocation.Set(NewStartLocation.X,NewStartLocation.Y,NewStartLocation.Z); }
+	void SetStartLocation(FVector NewStartLocation) { StartLocation.Set(NewStartLocation.X,NewStartLocation.Y,NewStartLocation.Z); Save(); }
 	UFUNCTION(BlueprintCallable)
 	FVector GetStartLocation() { return StartLocation; }
 
@@ -55,9 +52,6 @@ public:
 private:
 
 	void ClearWorld(UWorld * World);
-
-	UPROPERTY()
-	FString State;
 
 	UPROPERTY()
 	FString SlotName;

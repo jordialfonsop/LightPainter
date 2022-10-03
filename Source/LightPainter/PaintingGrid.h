@@ -26,6 +26,12 @@ public:
 	void ClearPaintings();
 	void ClearPaginationDots();
 
+	UFUNCTION(BlueprintCallable)
+	void SetDeleteMode(bool NewDeleteMode){DeleteMode = NewDeleteMode;};
+
+	UFUNCTION(BlueprintCallable)
+	bool GetDeleteMode(){return DeleteMode;};
+
 	int32 GetNumberOfSlots() const;
 
 protected:
@@ -46,5 +52,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	float PaginationDotPadding = 8;
+
+	bool DeleteMode = false;
 	
 };

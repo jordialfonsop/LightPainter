@@ -49,6 +49,6 @@ private:
 	FString SlotName;
 
 	UPROPERTY(EditAnywhere);
-	int32 RequiredHoops = 20;
+	int32 RequiredHoops = 5;
 
 };
